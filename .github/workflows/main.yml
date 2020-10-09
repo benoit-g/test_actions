@@ -41,3 +41,7 @@ jobs:
           wget https://releases.hashicorp.com/terraform/${terraform_version}/terraform_${terraform_version}_linux_amd64.zip
           unzip terraform_${terraform_version}_linux_amd64.zip
           rm -f terraform_${terraform_version}_linux_amd64.zip
+
+      - name: Check terraform version
+        run: |
+          ./terraform version
