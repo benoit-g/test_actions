@@ -10,6 +10,13 @@ on:
   pull_request:
     branches: [ main ]
 
+defaults:
+  run:
+    shell: bash
+
+env:
+  terraform_version: "0.13.4"
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -31,5 +38,6 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y wget unzip
-
-
+          wget https://releases.hashicorp.com/terraform/${terraform_version}/terraform_${terraform_version}_linux_amd64.zip
+          unzip terraform_${terraform_version}_linux_amd64.zip
+          rm -f terraform_${terraform_version}_linux_amd64.zip
